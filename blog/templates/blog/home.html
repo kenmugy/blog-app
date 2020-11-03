@@ -23,9 +23,9 @@
         </div>
         <div class="col s10">
           <span class="blue-text"><b>{{post.author}}</b></span>
-          <span><small>{{post.date_posted}}</small></span>
+          <span><small>{{post.date_posted | date:"F d, Y"}}</small></span>
           <div class="divider"></div>
-          <h5 class="">By {{post.title}}</h5>
+          <h5 class="">{{post.title}}</h5>
           <span class="black-text">By {{post.content}}</span>
         </div>
       </div>
