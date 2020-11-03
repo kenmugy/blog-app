@@ -5,9 +5,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{title}}</title>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="{% static 'blog/materialize.min.css' %}" />
   </head>
-  <body>
+  <body class="grey lighten-2">
+    <nav class="blue-grey darken-4">
+      <div class="nav-wrapper container">
+        <a href="{% url 'home' %}" class="brand-logo">Logo</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+          ><i class="material-icons">menu</i></a
+        >
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+    </ul>
     {% block content %} {% endblock content %}
     <script src="{% static 'blog/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'blog/materialize.min.js' %}"></script>
