@@ -1,12 +1,13 @@
 {% extends 'blog/base.html' %} {% block content %}
 <div class="container">
   <h1 class="blue-grey-text center-align">{{title}} - Page</h1>
-  <form action="" method="post" class="card-panel">
-    {% csrf_token %} 
-    {{form.as_p}}
+  <form action="" method="post" class="card-panel" style="width: 80%">
+    {% csrf_token %} {{form.as_p}}
     <button class="btn" type="submit">Sign Up</button>
     <div class="divider"></div>
-    <small>Already have an account? <a href="#">Login</a></small>
+    <small
+      >Already have an account? <a href="{% url 'login' %}">Login</a></small
+    >
   </form>
 </div>
 {% endblock content %}

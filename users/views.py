@@ -9,7 +9,7 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             success(request, f'Account created for {username}')
-            # form.save()
+            form.save()
             return redirect('home')
 
     return render(request,'users/register.html', {'form': form, 'title': 'Register' } )
