@@ -1,11 +1,12 @@
 {% extends 'blog/base.html' %} {% block content %}
 <div class="container">
-  <h1 class="blue-grey-text">{{title}} - Page</h1>
-  <form action="" method="post">
-    {{form}}
-    <button class="btn-block" type="submit">Sign Up</button>
+  <h1 class="blue-grey-text center-align">{{title}} - Page</h1>
+  <form action="" method="post" class="card-panel">
+    {% csrf_token %} 
+    {{form.as_p}}
+    <button class="btn" type="submit">Sign Up</button>
+    <div class="divider"></div>
+    <small>Already have an account? <a href="#">Login</a></small>
   </form>
-  <div class="divider"></div>
-  <small>Already have an account? <a href="#">Login</a></small>
 </div>
 {% endblock content %}
