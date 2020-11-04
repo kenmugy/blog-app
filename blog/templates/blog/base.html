@@ -14,6 +14,29 @@
     <link rel="stylesheet" href="{% static 'blog/materialize.min.css' %}" />
   </head>
   <body class="grey lighten-2">
+    {% if user.is_authenticated %}
+    <nav class="blue-grey darken-4">
+      <div class="nav-wrapper container">
+        <a href="{% url 'home' %}" class="brand-logo">Logo</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+          ><i class="material-icons">menu</i></a
+        >
+        <span class="chip grey"><a href="#">{{user|capfirst}}</a></span>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li>
+            <a href="{% url 'logout' %}">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+    {% else %}
     <nav class="blue-grey darken-4">
       <div class="nav-wrapper container">
         <a href="{% url 'home' %}" class="brand-logo">Logo</a>
@@ -24,17 +47,21 @@
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li>
-            <a href="{% url 'register' %}">register</a>
+            <a href="{% url 'register' %}">Register</a>
+          </li>
+          <li>
+            <a href="{% url 'login' %}">Login</a>
           </li>
         </ul>
       </div>
     </nav>
-
     <ul class="sidenav" id="mobile-demo">
       <li><a href="{% url 'home' %}">Home</a></li>
       <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'register' %}">Register</a></li>
+      <li><a href="{% url 'login' %}">Login</a></li>
     </ul>
-    {% if messages %} {% for message in messages %}
+    {% endif %} {% if messages %} {% for message in messages %}
     <div class="container">
       <div class="chip red center">{{message}}</div>
     </div>
