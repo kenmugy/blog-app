@@ -14,7 +14,8 @@ def register(request):
             return redirect('login')
 
     return render(request,'users/register.html', {'form': form, 'title': 'Register' } )
-    
+
+@login_required    
 def profile(request):
     return render(request,'users/profile.html', {} )
     
