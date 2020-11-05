@@ -1,11 +1,27 @@
 {% extends 'blog/base.html' %} {% block content %}
 <div class="container">
   <div class="media_profile">
-    <img class="circle responsive-img p_image" src="{{user.profile.image.url}}" alt="" srcset="" />
+    <img
+      class="circle responsive-img p_image"
+      src="{{user.profile.image.url}}"
+      alt=""
+      srcset=""
+    />
     <div class="media_info">
       <h1>{{user}}</h1>
-    <p>{{user.email}}</p>
+      <p>{{user.email}}</p>
     </div>
   </div>
+  <!-- form here -->
+  <form
+    action=""
+    method="post"
+    enctype="multipart/form-data"
+    class="card-panel"
+  >
+    {% csrf_token %} {{u_form.as_p}} {{p_form.as_p}}
+    <button class="btn" type="submit">Update</button>
+    <div class="divider"></div>
+  </form>
 </div>
 {% endblock content %}
