@@ -3,5 +3,34 @@
 }
 
 .divider {
-    margin-top: 10px;
+  margin-top: 10px;
 }
+
+.media_profile {
+  box-shadow: 3px 0px 6px black;
+  padding: 1rem;
+  width: 70%;
+  margin: 5% auto;
+  background: rgb(240, 237, 227);
+  color: rgb(124, 78, 120);
+  display: flex;
+  align-items: center;
+}
+.media_info {
+  border-left: 3px solid;
+  /* border: 3px solid; */
+  padding: .5em;
+}
+
+.media_info > h1 {
+  font-size: 2.6rem;
+  border-bottom: 1px solid;
+  /* margin-left: 2rem; */
+  font-family: fantasy;
+}
+
+/* .p_image {
+  border: 1px solid;
+  border-radius: 50%;
+  margin-right: 2rem;
+} */
