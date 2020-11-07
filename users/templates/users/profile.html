@@ -1,30 +1,17 @@
 {% extends 'blog/base.html' %} {% block content %}
 <div class="container">
-  <!-- <div class="media_profile">
-    <img
-      class="circle responsive-img p_image"
-      src="{{user.profile.image.url}}"
-      alt=""
-      srcset=""
-    />
-    <div class="media_info">
-      <h1>{{user}}</h1>
-      <p>{{user.email}}</p>
-    </div>
-  </div> -->
-  <div class="row card">
-    <div class="col s4" id="immg">
+  <div class="row card z-depth-0">
+    <div class="col s12 m3 center" id="immg">
       <img
-      class="circle responsive-img p_image"
-      src="{{user.profile.image.url}}"
-      alt=""
-      srcset=""
-    />
+        class="circle responsive-img p_image"
+        src="{{user.profile.image.url}}"
+        alt="uer profile image"
+      />
     </div>
-    <div class="col s8 media_info">
-      <h1>{{user}}</h1>
+    <blockquote class="col s12 m9 center grey darken-4 white-text">
+      <h1 class="">{{user|capfirst}}</h1>
       <p>{{user.email}}</p>
-    </div>
+    </blockquote>
   </div>
   <!-- form here -->
   <form
