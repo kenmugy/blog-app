@@ -17,6 +17,19 @@
           <div class="divider"></div>
           <h5 class="">{{object.title}}</h5>
           <span class="black-text">By {{object.content}}</span>
+          {% if object.author == user %}
+          <span>
+            <div class="row">
+              <div class="col col6">
+                <a class="btn btn-small red" href="{% url 'delete' post.pk %}">Delete</a>
+              </div>
+              <div class="col col6">
+                <a class="btn btn-small" href="{% url 'update' post.pk %}">Update</a>
+              </div>
+            </div>
+          </div>
+          </span>
+          {% endif %}
         </div>
       </div>
     </div>

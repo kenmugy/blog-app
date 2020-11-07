@@ -19,9 +19,20 @@
           <h5 class="">
             <a href="{% url 'detail' post.pk %}">{{post.title}}</a>
           </h5>
-          <span class="black-text">By {{post.content}}</span>
+          <span class="black-text">By {{post.content}}
+          </span>
+          <!-- <span>
+            <div class="row">
+              <div class="col col6">
+                <button class="btn btn-small red" type="submit">Delete</button>
+              </div>
+              <div class="col col6">
+                <a class="btn btn-small" href="{% url 'update' post.pk %}">Update</a>
+              </div>
+            </div>
+          </div>
+          </span> -->
         </div>
-      </div>
     </div>
   </div>
   {% endfor %}
