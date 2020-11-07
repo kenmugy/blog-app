@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from .models import Post
 from django.views.generic import (
     ListView, DetailView, 
@@ -22,7 +22,7 @@ class PostListView(ListView):
     template_name = "blog/home.html"
     context_object_name = 'posts'
 
-class PostDetailView(LoginRequiredMixin, DetailView):
+class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Post
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -41,6 +41,11 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def test_func(self):
+        post = slf.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
 
      
 
