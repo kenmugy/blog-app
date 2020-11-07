@@ -3,7 +3,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from .models import Post
 from django.views.generic import (
     ListView, DetailView, 
-    CreateView, UpdateView
+    CreateView, UpdateView,
+    DeleteView
 )
 
 
@@ -22,7 +23,7 @@ class PostListView(ListView):
     template_name = "blog/home.html"
     context_object_name = 'posts'
 
-class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -33,7 +34,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
 
@@ -42,11 +43,20 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
     def test_func(self):
-        post = slf.get_object()
+        post = self.get_object()
         if self.request.user == post.author:
             return True
         return False
 
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
+    model = Post
+    success_url = 'blog/'
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
      
 
 def about(request):

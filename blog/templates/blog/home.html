@@ -13,10 +13,12 @@
           <!-- notice the "circle" class -->
         </div>
         <div class="col s10">
-          <span class="blue-text"><b>{{post.author}}</b></span>
+          <span class="blue-text"><b>{{post.author|capfirst}}</b></span>
           <span><small>{{post.date_posted | date:"F d, Y"}}</small></span>
           <div class="divider"></div>
-          <h5 class=""><a href="{% url 'detail' post.pk %}">{{post.title}}</a></h5>
+          <h5 class="">
+            <a href="{% url 'detail' post.pk %}">{{post.title}}</a>
+          </h5>
           <span class="black-text">By {{post.content}}</span>
         </div>
       </div>

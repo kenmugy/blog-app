@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %} {% block content %}
+<div class="container">
+  <h1 class="blue-grey-text center-align">Delete Post</h1>
+  <form action="" method="post" class="card-panel">
+    {% csrf_token %}
+    <p>
+      Are you sure you want to Delete
+      <span class="blue-text">{{object.title}}</span> Post?
+    </p>
+    <div class="row" id="confirm-btns">
+      <div class="col col6">
+        <button class="btn btn-small red" type="submit">Yes, Delete</button>
+      </div>
+      <div class="col col6">
+        <a class="btn btn-small" href="{% url 'detail' object.pk %}">Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock content %}
