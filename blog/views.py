@@ -9,7 +9,6 @@ from django.views.generic import (
 )
 
 
-
 def home(request):
     posts = Post.objects.all()
     context = {
@@ -26,6 +25,7 @@ class PostListView(ListView):
 
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
+
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
@@ -71,10 +71,13 @@ def add_comment(request, id):
     return render(request, 'blog/home.html', {'form': form})
 
 
-
-
 def about(request):
     context = {
         'title': 'About'
     }
     return render(request, 'blog/about.html', context)
+# def post_detail(request, id):
+#     # post = get_object_or_404(Post, pk=id)
+#     post = Post.objects.get(pk=id)
+#     comments = Comment.objects.get(post=post)
+#     return render(request, 'blog/post_detail.html',{'post': post, 'comments': comments})

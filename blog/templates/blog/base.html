@@ -11,7 +11,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{% static 'blog/main.css' %}" />
-    <link rel="stylesheet" href="{% static 'blog/materialize.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
   </head>
   <body class="grey lighten-2">
     {% if user.is_authenticated %}
@@ -25,8 +28,6 @@
           <li class="">
             <a class="chip" href="{% url 'profile' %}">{{user|capfirst}}</a>
           </li>
-          <!-- <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'about' %}">About</a></li> -->
           <li>
             <a href="{% url 'create' %}">New Post</a>
           </li>
@@ -72,6 +73,6 @@
     </div>
     {% endfor %} {% endif %} {% block content %} {% endblock content %}
     <script src="{% static 'blog/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'blog/materialize.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
